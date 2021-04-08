@@ -1,2 +1,0 @@
-# metastats-python-sdk
-
