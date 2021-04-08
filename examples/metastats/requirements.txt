@@ -1,0 +1,1 @@
+metaapi-metastats-sdk==1.0.0

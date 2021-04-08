@@ -1,0 +1,7 @@
+recursive-include lib *
+recursive-include examples *
+include LICENSE
+include changelog.md
+exclude examples/metastats/.env
+prune examples/metastats/.metaapi
+
