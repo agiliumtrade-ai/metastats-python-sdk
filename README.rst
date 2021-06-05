@@ -53,7 +53,7 @@ Installation
 ============
 .. code-block:: bash
 
-    pip install metaapi-metastats-sdk
+    pip install metaapi-cloud-sdk
 
 Retrieving API token
 ====================
@@ -63,7 +63,7 @@ Configuring trading statistics
 ==============================
 .. code-block:: python
 
-    from metaapi_metastats_sdk import MetaStats
+    from metaapi_cloud_sdk import MetaStats
 
     token = '...'
     api = MetaStats(token=token)
@@ -90,3 +90,4 @@ Some of the APIs you might decide to use together with this module:
 
 1. MetaApi cloud forex trading API `https://metaapi.cloud/docs/client/ <https://metaapi.cloud/docs/client/>`_
 2. CopyFactory copy trading  API `https://metaapi.cloud/docs/copyfactory/ <https://metaapi.cloud/docs/copyfactory/>`_
+3. MetaTrader account management API `https://metaapi.cloud/docs/provisioning/ <https://metaapi.cloud/docs/provisioning/>`_

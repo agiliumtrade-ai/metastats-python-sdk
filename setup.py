@@ -8,7 +8,7 @@ install_requires = ['typing-extensions==3.7.4.3', 'iso8601', 'pytz', 'httpx==0.1
 tests_require = ['pytest', 'pytest-mock', 'pytest-asyncio', 'mock', 'respx']
 
 setuptools.setup(
-    name="metaapi_metastats_sdk",
+    name="metaapi_cloud_metastats_sdk",
     version="1.0.0",
     author="Agilium Labs LLC",
     author_email="agiliumtrade@agiliumtrade.ai",
@@ -21,8 +21,8 @@ setuptools.setup(
               'MT5', 'forex', 'API', 'REST', 'client', 'sdk', 'cloud', 'metrics', 'MetaStats', 'metastats'],
     url="https://github.com/agiliumtrade-ai/metaapi-metastats-python-sdk",
     include_package_data=True,
-    package_dir={'metaapi_metastats_sdk': 'lib'},
-    packages=['metaapi_metastats_sdk'],
+    package_dir={'metaapi_cloud_metastats_sdk': 'lib'},
+    packages=['metaapi_cloud_metastats_sdk'],
     install_requires=install_requires,
     tests_require=tests_require,
     license='SEE LICENSE IN LICENSE',
