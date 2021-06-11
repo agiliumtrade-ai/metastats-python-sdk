@@ -370,9 +370,13 @@ class Metrics(TypedDict):
     """The amount yielded by winning trades divided by the amount of losses yielded by losing trades."""
     sharpeRatio: Optional[float]
     """Average return earned in excess of the risk-free rate per unit of volatility."""
-    standardDeviation: Optional[float]
+    sortinoRatio: Optional[float]
+    """Differentiates harmful volatility from total overall volatility."""
+    standardDeviationProfit: Optional[float]
     """Statistical measure of volatility shows how much variation or dispersion there is from the mean profit in
     basic currency."""
+    kurtosisProfit: Optional[float]
+    """A statistical measure that is used to describe profit distribution."""
     averageHoldingPeriodReturn: Optional[float]
     """Average holding period return."""
     averageWin: Optional[float]
@@ -391,6 +395,8 @@ class Metrics(TypedDict):
     """Ability of a trading system to generate wins and losses in streaks."""
     probability: Optional[float]
     """Probability that a profit will be followed by a profit and a loss by a loss."""
+    daysSinceTradingStarted: Optional[float]
+    """The number of days that have passed since the opening of the first trade"""
     currencySummary: Optional[List[CurrencySummaryMetrics]]
     """Currency trading summary."""
     dailyGrowth: Optional[List[DailyGrowthMetrics]]

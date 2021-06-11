@@ -14,7 +14,7 @@ opts = {}
 @pytest.fixture(autouse=True)
 async def run_around_tests():
     global httpClient
-    httpClient = HttpClient(retry_opts={'minDelayInSeconds': 0.05, 'maxDelayInSeconds': 0.2})
+    httpClient = HttpClient()
     global opts
     opts = {'url': test_url}
     yield
@@ -179,7 +179,7 @@ class TestHttpClient:
     @pytest.mark.asyncio
     async def test_return_error_if_timed_out_to_retry(self):
         """Should return TimeoutException error if timed out to retry."""
-        respx.get(test_url).mock(side_effect=Response(202, headers={'retry-after': '0.9'}))
+        respx.get(test_url).mock(side_effect=Response(202, headers={'retry-after': '1'}))
         httpClient = HttpClient(60, {'maxDelayInSeconds': 2, 'retries': 3})
         try:
             await httpClient.request(opts)
