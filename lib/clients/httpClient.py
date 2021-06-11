@@ -61,7 +61,7 @@ class HttpClient:
             A request response.
         """
         if not end_time:
-            end_time = datetime.now().timestamp() + self._maxRetryDelayInSeconds + self._retries
+            end_time = datetime.now().timestamp() + self._maxRetryDelayInSeconds * self._retries
         retry_after_seconds = 0
         try:
             response = await self._make_request(options)

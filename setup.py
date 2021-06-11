@@ -5,7 +5,7 @@ with open("README.rst", "r") as fh:
 
 install_requires = ['typing-extensions==3.7.4.3', 'iso8601', 'pytz', 'httpx==0.16.1']
 
-tests_require = ['pytest', 'pytest-mock', 'pytest-asyncio', 'mock', 'respx']
+tests_require = ['pytest', 'pytest-mock', 'pytest-asyncio', 'mock', 'respx==0.16.3']
 
 setuptools.setup(
     name="metaapi_cloud_metastats_sdk",

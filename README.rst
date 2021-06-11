@@ -27,7 +27,7 @@ Pricing
 =======
 MetaStats is available to all MetaApi users without extra charges at this point.
 
-You pay only an affordable fee for MetaApi MetaTrader terminal hosting. See
+You pay a fee executing MetaTrader terminal on MetaApi cloud. See
 `https://metaapi.cloud/#pricing <https://metaapi.cloud/#pricing>`_ for more details.
 
 MetaApi provides a free tier so that you can test our APIs without any charges.
@@ -81,6 +81,10 @@ Retrieving trading statistics
 
     # retrieve MetaApi MetaTrader account statistics including open positions
     print(await metaStats.get_metrics(account_id=account_id, include_open_positions=True))
+
+Quotas and rate limits
+=================
+API calls you make are subject to rate limits. See `https://metaapi.cloud/docs/metastats/rateLimiting/ <https://metaapi.cloud/docs/metastats/rateLimiting/>`_ for more details.
 
 Related projects:
 =================
