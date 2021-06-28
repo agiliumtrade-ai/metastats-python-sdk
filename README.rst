@@ -47,7 +47,7 @@ Code examples
 =============
 We published some code examples in our github repository, namely:
 
-- Python: `https://github.com/agiliumtrade-ai/metaapi-metastats-python-sdk/tree/master/examples <https://github.com/agiliumtrade-ai/metaapi-metastats-python-sdk/tree/master/>`_
+- Python: `https://github.com/agiliumtrade-ai/metastats-python-sdk/tree/master/examples <https://github.com/agiliumtrade-ai/metastats-python-sdk/tree/master/>`_
 
 Installation
 ============

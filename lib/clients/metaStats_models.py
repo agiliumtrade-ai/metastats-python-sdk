@@ -116,9 +116,9 @@ class DailyGrowthMetrics(TypedDict):
     """Cumulative lots per day."""
     gains: Optional[float]
     """Cumulative gains per day."""
-    totalProfit: float
+    totalProfit: Optional[float]
     """Total profit in this day end."""
-    totalGains: float
+    totalGains: Optional[float]
     """Total gains in this day end."""
     balance: float
     """Balance in this day end."""
