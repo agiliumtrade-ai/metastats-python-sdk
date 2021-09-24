@@ -7,7 +7,7 @@ class CurrencySummaryHistoryDayMetrics(TypedDict):
     date: str
     """Date of trading day, in broker timezone, YYYY-MM-DD format."""
     totalProfit: float
-    """Total profit of trading day."""
+    """Total profit at the end of the day."""
     totalPips: Optional[float]
     """Total pips of trading day."""
     shortProfit: Optional[float]
@@ -116,9 +116,9 @@ class DailyGrowthMetrics(TypedDict):
     """Cumulative lots per day."""
     gains: Optional[float]
     """Cumulative gains per day."""
-    totalProfit: Optional[float]
+    totalProfit: float
     """Total profit in this day end."""
-    totalGains: Optional[float]
+    totalGains: float
     """Total gains in this day end."""
     balance: float
     """Balance in this day end."""
@@ -367,18 +367,22 @@ class Metrics(TypedDict):
     absoluteGain: Optional[float]
     """Simple deposit increase without regard to reinvestment."""
     profitFactor: Optional[float]
-    """The amount yielded by winning trades divided by the amount of losses yielded by losing trades."""
+    """The amount yielded by winning trades divided by the amount of losses yielded by losing trades. Result in range
+    0 - Infinity means: `0` - only loss, `1` - profit equals to loss, `Infinity` - only profit."""
     sharpeRatio: Optional[float]
-    """Average return earned in excess of the risk-free rate per unit of volatility."""
+    """Average return earned in excess of the risk-free rate per unit of volatility. It is calculated if there are at
+    least 30 closed deals in the history."""
     sortinoRatio: Optional[float]
-    """Differentiates harmful volatility from total overall volatility."""
+    """Differentiates harmful volatility from total overall volatility. It is calculated if there are at least 30
+    closed deals in the history."""
     standardDeviationProfit: Optional[float]
-    """Statistical measure of volatility shows how much variation or dispersion there is from the mean profit in
-    basic currency."""
+    """Statistical measure of volatility shows how much variation or dispersion. It is calculated if there are at
+    least 30 closed deals in the history."""
     kurtosisProfit: Optional[float]
-    """A statistical measure that is used to describe profit distribution."""
+    """A statistical measure that is used to describe profit distribution. It is calculated if there are at least
+    30 closed deals in the history."""
     averageHoldingPeriodReturn: Optional[float]
-    """Average holding period return."""
+    """Average holding period return. It is calculated if there are at least 30 closed deals in the history."""
     averageWin: Optional[float]
     """Average win in basic currency."""
     averageWinPips: Optional[float]
@@ -392,7 +396,8 @@ class Metrics(TypedDict):
     lostTradesPercent: Optional[float]
     """Percentage of losing trades."""
     zScore: Optional[float]
-    """Ability of a trading system to generate wins and losses in streaks."""
+    """Ability of a trading system to generate wins and losses in streaks. It is calculated if there are at least 30
+    closed deals in the history."""
     probability: Optional[float]
     """Probability that a profit will be followed by a profit and a loss by a loss."""
     daysSinceTradingStarted: Optional[float]
