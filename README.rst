@@ -83,7 +83,7 @@ Retrieving trading statistics
     print(await metaStats.get_metrics(account_id=account_id, include_open_positions=True))
 
 Quotas and rate limits
-=================
+======================
 API calls you make are subject to rate limits. See `https://metaapi.cloud/docs/metastats/rateLimiting/ <https://metaapi.cloud/docs/metastats/rateLimiting/>`_ for more details.
 
 Related projects:
