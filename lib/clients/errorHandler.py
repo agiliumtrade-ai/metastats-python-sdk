@@ -132,6 +132,7 @@ class InternalException(ApiException):
 
 
 class TooManyRequestsErrorMetadata(TypedDict):
+    """Metadata for too many requests error."""
     periodInMinutes: float
     """Throttling period in minutes."""
     requestsPerPeriodAllowed: int
