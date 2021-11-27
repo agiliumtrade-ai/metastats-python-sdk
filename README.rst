@@ -17,6 +17,9 @@ Features supported:
 - support for MetaTrader 4 and MetaTrader 5 platforms
 - metrics calculation for MetaTrader accounts added to MetaApi
 - optionally include open positions in metrics calculation
+- get historical trades for MetaApi account. The historical trades data is updated when you invoke metrics calculation
+endpoint or when set query parameter updateHistory to true
+- get open trades for MetaApi account
 
 The features described above are available for use via a professional, fast, easy to use, standards-driven REST API
 which can be easily consumed from any programming language.
@@ -81,6 +84,13 @@ Retrieving trading statistics
 
     # retrieve MetaApi MetaTrader account statistics including open positions
     print(await metaStats.get_metrics(account_id=account_id, include_open_positions=True))
+
+    # retrieve MetaApi MetaTrader account trades
+    print(await metaStats.get_account_trades(account_id=account_id, start_time='2020-01-01 00:00:00.000',
+                                             end_time='2021-01-01 00:00:00.000'))
+
+    # retrieve MetaApi MetaTrader account open trades
+    print(await metaStats.get_account_open_trades(account_id=account_id))
 
 Quotas and rate limits
 ======================

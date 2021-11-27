@@ -298,6 +298,12 @@ class Metrics(TypedDict):
     """Maximum balance that have ever been on the account."""
     equity: float
     """The result (current amount) of all positions, including opened."""
+    margin: float
+    """Current value of margin."""
+    freeMargin: float
+    """Current value of free margin."""
+    marginLevel: Optional[float]
+    """Current value of margin level."""
     trades: float
     """Total number of closed positions on the account."""
     withdrawals: Optional[float]
@@ -324,6 +330,8 @@ class Metrics(TypedDict):
     worstTradePipsDate: Optional[str]
     """Date of the worst pips from one trade that have ever been on the account, in broker timezone,
     YYYY-MM-DD HH:mm:ss.SSS format."""
+    cagr: Optional[float]
+    """Compound annual growth rate."""
     commissions: Optional[float]
     """Commissions charged by the broker for the entire period."""
     dailyGain: Optional[float]
@@ -356,6 +364,8 @@ class Metrics(TypedDict):
     """Percentage of short winning trades."""
     maxDrawdown: Optional[float]
     """Percentage of maximum drawdown of balance during the entire trading history."""
+    mar: Optional[float]
+    """Mar ratio."""
     lots: Optional[float]
     """Total volume of trades."""
     pips: Optional[float]
@@ -420,3 +430,63 @@ class Metrics(TypedDict):
     """Metrics for each duration of trades."""
     tradeDurationDiagram: Optional[List[TradeDurationDiagramColumnMetrics]]
     """List of information columns about the duration of trades for the diagram."""
+
+
+class Trade(TypedDict):
+    """Historical trade."""
+    _id: str
+    """Historical trade id."""
+    accountId: str
+    """MetaApi account id."""
+    volume: float
+    """Trade volume."""
+    durationInMinutes: float
+    """Trade duration in minutes."""
+    profit: float
+    """Trade profit."""
+    gain: float
+    """Trade gain."""
+    success: str
+    """Trade success."""
+    openTime: str
+    """Time the trade was opened at in broker timezone, YYYY-MM-DD HH:mm:ss.SSS format."""
+    type: str
+    """Trade type"""
+    symbol: Optional[str]
+    """Symbol the trade relates to."""
+    closeTime: Optional[str]
+    """Time the trade was closed at in broker timezone, YYYY-MM-DD HH:mm:ss.SSS format."""
+    openPrice: Optional[float]
+    """Trade opening price."""
+    closePrice: Optional[float]
+    """Trade closing price."""
+    pips: Optional[float]
+    """The number of pips earned (positive) or lost (negative) in this trade."""
+
+
+class OpenTrade(TypedDict):
+    """Open trade."""
+    _id: str
+    """Historical trade id."""
+    accountId: str
+    """MetaApi account id."""
+    volume: float
+    """Trade volume."""
+    durationInMinutes: float
+    """Trade duration in minutes."""
+    profit: float
+    """Trade profit."""
+    gain: float
+    """Trade gain."""
+    success: str
+    """Trade success."""
+    openTime: str
+    """Time the trade was opened at in broker timezone, YYYY-MM-DD HH:mm:ss.SSS format."""
+    type: str
+    """Trade type"""
+    symbol: Optional[str]
+    """Symbol the trade relates to."""
+    openPrice: Optional[float]
+    """Trade opening price."""
+    pips: Optional[float]
+    """The number of pips earned (positive) or lost (negative) in this trade."""

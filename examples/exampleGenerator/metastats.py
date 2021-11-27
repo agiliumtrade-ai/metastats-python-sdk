@@ -3,7 +3,7 @@ import asyncio
 import os
 
 
-async def get_account_metrics():
+async def example_request():
     # your MetaApi API token
     token = os.getenv('TOKEN') or '<put in your token here>'
     # your MetaApi account id
@@ -29,8 +29,15 @@ async def get_account_metrics():
 
         metrics = await meta_stats.get_metrics(account_id)
         print(metrics)  # -> {'trades': ..., 'balance': ..., ...}
+
+        trades = await meta_stats.get_account_trades(account_id, '0000-01-01 00:00:00.000', '9999-01-01 00:00:00.000')
+        print(trades[-5:])  # -> {_id: ..., gain: ..., ...}
+
+        open_trades = await meta_stats.get_account_open_trades(account_id)
+        print(open_trades)  # -> {_id: ..., gain: ..., ...}
+
     except Exception as err:
         print(meta_stats.format_error(err))
     exit(0)
 
-asyncio.run(get_account_metrics())
+asyncio.run(example_request())

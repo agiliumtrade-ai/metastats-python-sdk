@@ -32,14 +32,33 @@ class MetaStats:
 
     @property
     def get_metrics(self):
-        """Returns the getMetrics MetaStatsClient method bound to the MetaStatsClient instance.
+        """Returns the get_metrics MetaStatsClient method bound to the MetaStatsClient instance.
 
         Returns:
-            getMetrics MetaStatsClient method.
+            get_metrics MetaStatsClient method.
         """
         return self._metaStatsClient.get_metrics
 
-    def format_error(self, err: Exception):
+    @property
+    def get_account_trades(self):
+        """Returns the get_account_trades MetaStatsClient method bound to the MetaStatsClient instance.
+
+        Returns:
+            get_account_trades MetaStatsClient method.
+        """
+        return self._metaStatsClient.get_account_trades
+
+    @property
+    def get_account_open_trades(self):
+        """Returns the get_account_open_trades MetaStatsClient method bound to the MetaStatsClient instance.
+
+        Returns:
+            get_account_open_trades MetaStatsClient method.
+        """
+        return self._metaStatsClient.get_account_open_trades
+
+    @staticmethod
+    def format_error(err: Exception):
         """Formats and outputs metaApi errors with additional information.
 
         Args:
