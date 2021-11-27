@@ -18,7 +18,7 @@ Features supported:
 - metrics calculation for MetaTrader accounts added to MetaApi
 - optionally include open positions in metrics calculation
 - get historical trades for MetaApi account. The historical trades data is updated when you invoke metrics calculation
-endpoint or when set query parameter updateHistory to true
+  endpoint or when set query parameter updateHistory to true
 - get open trades for MetaApi account
 
 The features described above are available for use via a professional, fast, easy to use, standards-driven REST API
