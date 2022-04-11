@@ -1,1 +1,1 @@
-metaapi-cloud-sdk>=16.0
+metaapi-cloud-sdk>=19.0
