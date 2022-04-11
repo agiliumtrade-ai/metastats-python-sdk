@@ -5,11 +5,11 @@ with open("README.rst", "r") as fh:
 
 install_requires = ['typing-extensions~=3.10.0.0', 'iso8601', 'pytz', 'httpx==0.16.1']
 
-tests_require = ['pytest', 'pytest-mock', 'pytest-asyncio', 'mock', 'respx==0.16.3']
+tests_require = ['pytest', 'pytest-mock', 'pytest-asyncio', 'mock', 'respx==0.16.3', 'freezegun==1.0.0']
 
 setuptools.setup(
     name="metaapi_cloud_metastats_sdk",
-    version="2.0.0",
+    version="3.1.0",
     author="Agilium Labs LLC",
     author_email="agiliumtrade@agiliumtrade.ai",
     description="Python SDK for MetaStats forex trading statistics API. Can calculate metrics for MetaTrader "

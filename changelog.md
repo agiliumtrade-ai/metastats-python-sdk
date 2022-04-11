@@ -1,3 +1,8 @@
+3.1.0
+  - added region support
+  - breaking change: changed default value for update_history parameter get_account_trades method
+  - improved readme and examples
+
 2.0.0
   - added getAccountTrades method
   - added getAccountOpenTrades method

@@ -1,5 +1,6 @@
 from .clients.httpClient import HttpClient, RetryOpts
 from .clients.metaStats_client import MetaStatsClient
+from .clients.domain_client import DomainClient
 from typing_extensions import TypedDict
 from typing import Optional
 import traceback
@@ -28,7 +29,8 @@ class MetaStats:
         opts: ConnectionOptions = opts or {}
         http_client = HttpClient(opts['requestTimeout'] if 'requestTimeout' in opts else None,
                                  opts['retryOpts'] if 'retryOpts' in opts else None)
-        self._metaStatsClient = MetaStatsClient(http_client, token, opts['domain'] if 'domain' in opts else None)
+        domain_client = DomainClient(http_client, token, opts['domain'] if 'domain' in opts else None)
+        self._metaStatsClient = MetaStatsClient(domain_client)
 
     @property
     def get_metrics(self):

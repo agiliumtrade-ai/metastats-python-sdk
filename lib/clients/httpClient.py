@@ -51,14 +51,15 @@ class HttpClient:
         self._minRetryDelayInSeconds = retry_opts['minDelayInSeconds'] if 'minDelayInSeconds' in retry_opts else 1
         self._maxRetryDelayInSeconds = retry_opts['maxDelayInSeconds'] if 'maxDelayInSeconds' in retry_opts else 30
 
-    async def request(self, options: RequestOptions, retry_counter: int = 0, end_time: float = None) -> Response:
+    async def request(self, options: dict, end_time: float = None):
         """Performs a request. Response errors are returned as ApiException or subclasses.
 
         Args:
             options: Request options.
+            end_time: End time for the request.
 
         Returns:
-            A request response.
+            Request result.
         """
         if not end_time:
             end_time = datetime.now().timestamp() + self._maxRetryDelayInSeconds * self._retries
@@ -76,11 +77,45 @@ class HttpClient:
                 except Exception as err:
                     print('Error parsing json', err)
         except HTTPError as err:
-            retry_counter = await self._handle_error(err, retry_counter, end_time)
-            return await self.request(options, retry_counter, end_time)
+            raise self._convert_error(err)
         if retry_after_seconds:
             await self._handle_retry(end_time, retry_after_seconds)
-            response = await self.request(options, retry_counter, end_time)
+            response = await self.request(options, end_time)
+        return response
+
+    async def request_with_failover(self, options: RequestOptions, retry_counter: int = 0,
+                                    end_time: float = None) -> Response:
+        """Performs a request. Response errors are returned as ApiException or subclasses.
+
+        Args:
+            options: Request options.
+            retry_counter: Retry counter.
+            end_time: End time for a request.
+
+        Returns:
+            A request response.
+        """
+        if not end_time:
+            end_time = datetime.now().timestamp() + self._maxRetryDelayInSeconds * self._retries
+        retry_after_seconds = 0
+        try:
+            response = await self._make_request(options)
+            response.raise_for_status()
+            if response.status_code == 202:
+                retry_after_seconds = response.headers['retry-after']
+                if isinstance(retry_after_seconds, str):
+                    retry_after_seconds = float(retry_after_seconds)
+            if hasattr(response, 'content') and response.content:
+                try:
+                    response = response.json()
+                except Exception as err:
+                    print('Error parsing json', err)
+        except HTTPError as err:
+            retry_counter = await self._handle_error(err, retry_counter, end_time)
+            return await self.request_with_failover(options, retry_counter, end_time)
+        if retry_after_seconds:
+            await self._handle_retry(end_time, retry_after_seconds)
+            response = await self.request_with_failover(options, retry_counter, end_time)
         return response
 
     async def _make_request(self, options: RequestOptions) -> Response:
@@ -118,12 +153,17 @@ class HttpClient:
         raise error
 
     def _convert_error(self, err: HTTPError):
+        if err.__class__.__name__ == 'ConnectTimeout':
+            return err
         try:
             response: ExceptionMessage or TypedDict = json.loads(err.response.text)
         except Exception:
             response = {}
-        err_message = response['message'] if 'message' in response else err.response.reason_phrase
-        status = err.response.status_code
+        err_message = response['message'] if 'message' in response else (
+            err.response.reason_phrase if hasattr(err, 'response') else None)
+        status = None
+        if hasattr(err, 'response'):
+            status = err.response.status_code
         if status == 400:
             details = response['details'] if 'details' in response else []
             return ValidationException(err_message, details)
