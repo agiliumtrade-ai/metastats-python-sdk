@@ -9,7 +9,7 @@ tests_require = ['pytest', 'pytest-mock', 'pytest-asyncio', 'mock', 'respx==0.16
 
 setuptools.setup(
     name="metaapi_cloud_metastats_sdk",
-    version="3.1.0",
+    version="3.1.1",
     author="Agilium Labs LLC",
     author_email="agiliumtrade@agiliumtrade.ai",
     description="Python SDK for MetaStats forex trading statistics API. Can calculate metrics for MetaTrader "
