@@ -1,3 +1,6 @@
+3.1.1
+  - added references to MT manager api and risk management api
+
 3.1.0
   - added region support
   - breaking change: changed default value for update_history parameter get_account_trades method
