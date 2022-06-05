@@ -1,3 +1,6 @@
+3.1.2
+  - fixed dependency vulnerabilities
+
 3.1.1
   - added references to MT manager api and risk management api
 

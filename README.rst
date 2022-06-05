@@ -10,6 +10,8 @@ did it for you.
 MetaStats API is a member of MetaApi project (`https://metaapi.cloud <https://metaapi.cloud>`_), a powerful cloud forex
 trading API which supports both MetaTrader 4 and MetaTrader 5 platforms.
 
+This SDK requires a 3.8+ version of Python to run.
+
 MetaStats API features
 ======================
 Features supported:
