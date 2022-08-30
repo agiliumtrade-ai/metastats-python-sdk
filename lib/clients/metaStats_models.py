@@ -462,6 +462,10 @@ class Trade(TypedDict):
     """Trade closing price."""
     pips: Optional[float]
     """The number of pips earned (positive) or lost (negative) in this trade."""
+    riskInBalancePercent: Optional[float]
+    """Trade risk in % of balance."""
+    riskInPips: Optional[float]
+    """Trade risk in pips."""
 
 
 class OpenTrade(TypedDict):
@@ -490,3 +494,7 @@ class OpenTrade(TypedDict):
     """Trade opening price."""
     pips: Optional[float]
     """The number of pips earned (positive) or lost (negative) in this trade."""
+    riskInBalancePercent: Optional[float]
+    """Trade risk in % of balance."""
+    riskInPips: Optional[float]
+    """Trade risk in pips."""
