@@ -39,7 +39,7 @@ MetaApi provides a free tier so that you can test our APIs without any charges.
 
 Frequently asked questions (FAQ)
 ================================
-FAQ is located here: `http://metaapi.cloud/docs/metastats/faq <http://metaapi.cloud/docs/metastats/faq>`_
+FAQ is located here: `http://metaapi.cloud/docs/metastats/faq/ <http://metaapi.cloud/docs/metastats/faq/>`_
 
 REST API documentation
 ======================

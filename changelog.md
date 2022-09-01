@@ -1,3 +1,6 @@
+3.2.1
+  - fix faq url
+
 3.2.0
   - added riskInBalancePercent metric to trades and open trades
   - added riskInPips metric to trades and open trades
