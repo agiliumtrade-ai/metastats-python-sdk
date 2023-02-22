@@ -10,9 +10,9 @@ tests_require = ['pytest==6.2.5', 'pytest-mock==3.8.2', 'pytest-asyncio==0.16.0'
 
 setuptools.setup(
     name="metaapi_cloud_metastats_sdk",
-    version="3.2.1",
-    author="Agilium Labs LLC",
-    author_email="agiliumtrade@agiliumtrade.ai",
+    version="3.2.2",
+    author="MetaApi DMCC",
+    author_email="support@metaapi.cloud",
     description="Python SDK for MetaStats forex trading statistics API. Can calculate metrics for MetaTrader "
                 "accounts added to MetaApi. Supports both MetaTrader 5 (MT5) and MetaTrader 4 (MT4). "
                 "(https://metaapi.cloud)",

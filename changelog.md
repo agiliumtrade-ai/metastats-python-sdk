@@ -1,3 +1,6 @@
+3.2.2
+  - update package info
+
 3.2.1
   - fix faq url
 
